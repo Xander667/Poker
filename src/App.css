@@ -8,9 +8,16 @@
   background-color: green;
 
   position: absolute;
-
+  z-index: -1;
   margin-left: 25%;
   margin-top: 200px;
+}
+
+#dealCardsButton {
+  height: 30px;
+  width: 100px;
+  margin-left: 35%;
+  margin-top: 550px
 }
 
 #card {

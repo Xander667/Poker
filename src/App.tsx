@@ -21,12 +21,36 @@ class App extends React.Component<{}, IAppState> {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Welcome to Poker</h1>
         </header>
-        <div id="pokerTable"/>
+        { this.renderPokerTable() }
         { this.renderCard( )}
+        { this.renderDealCardsButton() }
       </div>
     );
+  }
+
+  public renderDealCardsButton(): JSX.Element {
+    return(
+      <div>
+        <button id="dealCardsButton" onClick={this.dealCards}>
+          Deal
+        </button>
+      </div>
+    );
+  }
+
+  public renderPokerTable(): JSX.Element {
+    return (
+      <div id="pokerTable">
+        Daves
+      </div>
+    )
+  }
+
+  public dealCards = (): void => {
+    const newCard = new Card();
+    this.setState({currentCard: newCard });
   }
 
   public renderCard(): JSX.Element {
