@@ -20,15 +20,20 @@
   margin-top: 550px
 }
 
+#handArea {
+  margin-left: 50%;
+  margin-top: 550px;
+  position: absolute;
+  display: flex;
+}
+
 #card {
-  height: 150px;
+  height: 80px;
   width: 100px;
   background-color: white;
   border: black 1px solid;
-  position: absolute;
 
-  margin-left: 50%;
-  margin-top: 550px
+  margin-left: 2%;
 }
 
 .App-logo {

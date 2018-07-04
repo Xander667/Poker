@@ -3,17 +3,21 @@ import { Card, Suit} from "../src/models/Card";
 import './App.css';
 
 import logo from './logo.svg';
+import { Deck } from './models/Deck';
+import { Hand } from './models/Hand';
 
 interface IAppState {
-  currentCard: Card
+  deck: Deck
+  currentHand: Hand
 }
 
 class App extends React.Component<{}, IAppState> {
 
   constructor(props: {}) {
     super(props);
-    const card: Card = new Card();
-    this.state = { currentCard: card };
+    const deck: Deck = new Deck();
+    const hand: Hand = deck.getHand();
+    this.state = { deck, currentHand: hand };
   }
   
   public render() {
@@ -24,7 +28,7 @@ class App extends React.Component<{}, IAppState> {
           <h1 className="App-title">Welcome to Poker</h1>
         </header>
         { this.renderPokerTable() }
-        { this.renderCard( )}
+        { this.renderCards()}
         { this.renderDealCardsButton() }
       </div>
     );
@@ -49,18 +53,26 @@ class App extends React.Component<{}, IAppState> {
   }
 
   public dealCards = (): void => {
-    const newCard = new Card();
-    this.setState({currentCard: newCard });
+    const newHand = this.state.deck.getHand();
+    this.setState({currentHand: newHand });
   }
 
-  public renderCard(): JSX.Element {
-    const card: JSX.Element = (
-      <div id="card">
-      { this.state.currentCard.rank }
-      { this.renderSuit(this.state.currentCard.suit) }
+  public renderCards(): JSX.Element {
+    return(
+      <div id="handArea">
+        {this.renderCard(this.state.currentHand.card1)}
+        {this.renderCard(this.state.currentHand.card2)}
       </div>
     );
-    return card;
+  }
+
+  public renderCard(card: Card): JSX.Element {
+    return (
+      <div id="card">
+      { card.rank }
+      { this.renderSuit(card.suit) }
+      </div>
+    );
   }
 
   // Returns a JSX with the correct suit

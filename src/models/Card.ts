@@ -2,9 +2,19 @@ export class Card {
     public suit: number;
     public rank: number;
   
-    constructor() {
-      this.suit = this.setSuit();
-      this.rank = this.setRank();
+    constructor(suit?: Suit, rank?: Rank) {
+
+      if(suit) {
+        this.suit = suit;
+      } else {
+        this.suit = this.setSuit();
+      }
+
+      if(rank) {
+        this.rank = rank;
+      } else {
+        this.rank = this.setRank();
+      }
     }
   
     private setSuit(): number {
