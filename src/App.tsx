@@ -8,7 +8,8 @@ import { Hand } from './models/Hand';
 
 interface IAppState {
   deck: Deck
-  currentHand: Hand
+  hand1: Hand,
+  hand2: Hand
 }
 
 class App extends React.Component<{}, IAppState> {
@@ -17,7 +18,8 @@ class App extends React.Component<{}, IAppState> {
     super(props);
     const deck: Deck = new Deck();
     const hand: Hand = deck.getHand();
-    this.state = { deck, currentHand: hand };
+    const hand2: Hand = deck.getHand();
+    this.state = { deck, hand1: hand, hand2 };
   }
   
   public render() {
@@ -28,7 +30,7 @@ class App extends React.Component<{}, IAppState> {
           <h1 className="App-title">Welcome to Poker</h1>
         </header>
         { this.renderPokerTable() }
-        { this.renderCards()}
+        { this.renderHands()}
         { this.renderDealCardsButton() }
       </div>
     );
@@ -54,14 +56,34 @@ class App extends React.Component<{}, IAppState> {
 
   public dealCards = (): void => {
     const newHand = this.state.deck.getHand();
-    this.setState({currentHand: newHand });
+    const newHand2 = this.state.deck.getHand();
+    this.setState({hand1: newHand, hand2: newHand2 });
   }
 
-  public renderCards(): JSX.Element {
+  public renderHands(): JSX.Element[] {
+    const allHands: JSX.Element[] = [];
+    allHands.push(this.renderCards(1));
+    allHands.push(this.renderCards(2));
+    return allHands;
+  }
+
+  public renderCards(playerNumber: number): JSX.Element {
+    let style: React.CSSProperties = {
+      marginLeft: "50%"
+    };
+    let hand: Hand = this.state.hand1;
+    if(playerNumber === 1) {
+      style = {
+        marginLeft: "30%"
+      }; 
+      hand = this.state.hand2;
+    }
+
     return(
-      <div id="handArea">
-        {this.renderCard(this.state.currentHand.card1)}
-        {this.renderCard(this.state.currentHand.card2)}
+      <div id="handArea" style={style}>
+        Player # {  playerNumber }
+        {this.renderCard(hand.card1)}
+        {this.renderCard(hand.card2)}
       </div>
     );
   }
@@ -69,7 +91,9 @@ class App extends React.Component<{}, IAppState> {
   public renderCard(card: Card): JSX.Element {
     return (
       <div id="card">
-      { card.rank }
+      { card.getRankName()}
+      <br/>
+      { card.getSuitName()}
       { this.renderSuit(card.suit) }
       </div>
     );
@@ -79,35 +103,35 @@ class App extends React.Component<{}, IAppState> {
   public renderSuit(suit: Suit): JSX.Element {
     let style: React.CSSProperties = {};
     
-    if(suit === Suit.club || suit === Suit.spade) {
+    if(suit === Suit.Club || suit === Suit.Spade) {
       style = {
         backgroundColor: "white"
       }; 
-    } else if (suit === Suit.diamond || suit === Suit.heart) {
+    } else if (suit === Suit.Diamond || suit === Suit.Heart) {
       style = {
         backgroundColor: "red"
       }; 
     }
 
-    if(suit === Suit.club) {
+    if(suit === Suit.Club) {
       return (
         <div style={style}>
           &clubs;
         </div> 
       );
-    } else if(suit === Suit.diamond) {
+    } else if(suit === Suit.Diamond) {
       return (
         <div style={style}>
           &diams;
         </div> 
       );
-    } else if(suit === Suit.heart) {
+    } else if(suit === Suit.Heart) {
       return (
         <div style={style}>
           &hearts;
         </div> 
       );
-    } else if(suit === Suit.spade) {
+    } else if(suit === Suit.Spade) {
       return (
         <div style={style}>
           &spades;
