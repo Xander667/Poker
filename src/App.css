@@ -20,6 +20,12 @@
   margin-top: 550px
 }
 
+#boardArea {
+  margin-top: 350px;
+  position: absolute;
+  display: flex;
+}
+
 #handArea {
   margin-top: 550px;
   position: absolute;

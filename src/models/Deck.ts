@@ -1,3 +1,5 @@
+
+import { Board } from "./Board";
 import { Card, Rank, Suit } from "./Card";
 import { Hand } from "./Hand";
 
@@ -29,6 +31,44 @@ export class Deck {
         return new Hand(card1, card2);
     }
 
+    public getBoard(): Board {
+        // Card 1
+        let randomCard: number = Math.floor(Math.random() * Math.floor(this.availableCards.length));
+        const card1 = this.availableCards[randomCard];
+      
+        this.availableCards.splice(randomCard, 1);
+        this.discardedCards.push(card1);
+
+        // Card 2
+        randomCard = Math.floor(Math.random() * Math.floor(this.availableCards.length));
+        const card2 = this.availableCards[randomCard];
+      
+        this.availableCards.splice(randomCard, 1);
+        this.discardedCards.push(card2);
+
+        // Card 3
+        randomCard = Math.floor(Math.random() * Math.floor(this.availableCards.length));
+        const card3 = this.availableCards[randomCard];
+      
+        this.availableCards.splice(randomCard, 1);
+        this.discardedCards.push(card3);
+        
+        // Card 4
+        randomCard = Math.floor(Math.random() * Math.floor(this.availableCards.length));
+        const card4 = this.availableCards[randomCard];
+      
+        this.availableCards.splice(randomCard, 1);
+        this.discardedCards.push(card4);
+        
+        // Card 5
+        randomCard = Math.floor(Math.random() * Math.floor(this.availableCards.length));
+        const card5 = this.availableCards[randomCard];
+      
+        this.availableCards.splice(randomCard, 1);
+        this.discardedCards.push(card5);
+
+        return new Board(card1, card2, card3, card4, card5);
+    }
 
     // fills available cards with 52 correct cards
     private fillDeck(): void {

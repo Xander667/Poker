@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Board } from "../src/models/Board";
 import { Card, Suit} from "../src/models/Card";
 import './App.css';
 
@@ -7,9 +8,10 @@ import { Deck } from './models/Deck';
 import { Hand } from './models/Hand';
 
 interface IAppState {
-  deck: Deck
+  deck: Deck,
   hand1: Hand,
-  hand2: Hand
+  hand2: Hand,
+  board: Board
 }
 
 class App extends React.Component<{}, IAppState> {
@@ -17,9 +19,7 @@ class App extends React.Component<{}, IAppState> {
   constructor(props: {}) {
     super(props);
     const deck: Deck = new Deck();
-    const hand: Hand = deck.getHand();
-    const hand2: Hand = deck.getHand();
-    this.state = { deck, hand1: hand, hand2 };
+    this.state = { deck, hand1: deck.getHand(), hand2: deck.getHand(), board: deck.getBoard() };
   }
   
   public render() {
@@ -30,34 +30,26 @@ class App extends React.Component<{}, IAppState> {
           <h1 className="App-title">Welcome to Poker</h1>
         </header>
         { this.renderPokerTable() }
+        { this.renderBoardOfCards() }
         { this.renderHands()}
         { this.renderDealCardsButton() }
       </div>
     );
   }
 
-  public renderDealCardsButton(): JSX.Element {
+  public renderBoardOfCards(): JSX.Element {
+    const style: React.CSSProperties = {
+      marginLeft: "40%"
+    };
     return(
-      <div>
-        <button id="dealCardsButton" onClick={this.dealCards}>
-          Deal
-        </button>
+      <div id="boardArea" style={style}>
+        {this.renderCard(this.state.board.cards[0])}
+        {this.renderCard(this.state.board.cards[1])}
+        {this.renderCard(this.state.board.cards[2])}
+        {this.renderCard(this.state.board.cards[3])}
+        {this.renderCard(this.state.board.cards[4])}
       </div>
     );
-  }
-
-  public renderPokerTable(): JSX.Element {
-    return (
-      <div id="pokerTable">
-        Daves
-      </div>
-    )
-  }
-
-  public dealCards = (): void => {
-    const newHand = this.state.deck.getHand();
-    const newHand2 = this.state.deck.getHand();
-    this.setState({hand1: newHand, hand2: newHand2 });
   }
 
   public renderHands(): JSX.Element[] {
@@ -97,6 +89,29 @@ class App extends React.Component<{}, IAppState> {
       { this.renderSuit(card.suit) }
       </div>
     );
+  }
+  public renderDealCardsButton(): JSX.Element {
+    return(
+      <div>
+        <button id="dealCardsButton" onClick={this.dealCards}>
+          Deal
+        </button>
+      </div>
+    );
+  }
+
+  public renderPokerTable(): JSX.Element {
+    return (
+      <div id="pokerTable">
+        Daves
+      </div>
+    )
+  }
+
+  public dealCards = (): void => {
+    const newHand = this.state.deck.getHand();
+    const newHand2 = this.state.deck.getHand();
+    this.setState({hand1: newHand, hand2: newHand2 });
   }
 
   // Returns a JSX with the correct suit
