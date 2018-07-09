@@ -1,8 +1,12 @@
 {
   "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
-  "linterOptions": {
+  "rules": {
     "ordered-imports": "any",
     "named-imports-order": "any",
+    "no-console": false,
+    "no-namespace": false
+  },
+  "linterOptions": {
     "exclude": [
       "config/**/*.js",
       "node_modules/**/*.ts"

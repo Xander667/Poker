@@ -50,7 +50,7 @@ export class Card {
       } else if(this.rank === Rank.King) {
         return "King";
       } else {
-        return "Error suit in getSuitName";
+        return "Error suit in getRankName";
       }
     }
 
