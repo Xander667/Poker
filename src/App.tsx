@@ -462,6 +462,51 @@ class App extends React.Component<{}, IAppState> {
       if((this.doesIncludeRank(fiveCardHand, Rank.Five) && (this.doesIncludeRank(fiveCardHand, Rank.Six)) && (this.doesIncludeRank(fiveCardHand, Rank.Two)) && (this.doesIncludeRank(fiveCardHand, Rank.Three)) && (this.doesIncludeRank(fiveCardHand, Rank.Four)))) { rank = 114; }
       if((this.doesIncludeRank(fiveCardHand, Rank.Five) && (this.doesIncludeRank(fiveCardHand, Rank.Ace)) && (this.doesIncludeRank(fiveCardHand, Rank.Two)) && (this.doesIncludeRank(fiveCardHand, Rank.Three)) && (this.doesIncludeRank(fiveCardHand, Rank.Four)))) { rank = 113; }
       if(rank !== 0){ console.log('Straight'); }
+    }
+
+    // Three of a kind
+    if(rank === 0){
+      if(this.countRank(fiveCardHand, Rank.Ace) === 3) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ace);
+        rank = 112 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.King) === 3) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.King);
+        rank = 111 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Queen) === 3) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Queen);
+        rank = 110 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Jack) === 3) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Jack);
+        rank = 109 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Ten) === 3) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ten);
+        rank = 108 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Nine) === 3) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Nine);
+        rank = 107 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Eight) === 3) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Eight);
+        rank = 106 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Seven) === 3) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Seven);
+        rank = 105 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Six) === 3) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Six);
+        rank = 104 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Five) === 3) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Five);
+        rank = 103 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Four) === 3) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Four);
+        rank = 102 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Three) === 3) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Three);
+        rank = 101 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Two) === 3) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Two);
+        rank = 100 + this.rankKickers(fiveCardHand); 
+      }
+      if(rank !== 0){ console.log('Three of a Kind'); }
   }
     return rank;
   }
