@@ -131,24 +131,78 @@ class App extends React.Component<{}, IAppState> {
     // Four of a kind
     if(rank === 0) {
       if ((fiveCardHand.indexOf(Cards.AceClubs) > -1) && (fiveCardHand.indexOf(Cards.AceDiamonds) > -1) && (fiveCardHand.indexOf(Cards.AceHearts) > -1) && (fiveCardHand.indexOf(Cards.AceSpades) > -1)) {
-          fiveCardHand = fiveCardHand.filter((card: Card) => { return card.rank !== Rank.Ace; });
-          rank = 292;
-        }
-
-      if ((fiveCardHand.indexOf(Cards.AceClubs) > -1) && (fiveCardHand.indexOf(Cards.AceDiamonds) > -1) && (fiveCardHand.indexOf(Cards.AceHearts) > -1) && (fiveCardHand.indexOf(Cards.AceSpades) > -1)) {
-        fiveCardHand = fiveCardHand.filter((card: Card) => { return card.rank !== Rank.Ace; });
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ace);
         rank = 292;
-      }
-
-
-
-        // If we hit quads calc kicker value and return total.
-        if (rank !== 0) {
-          kickerVal = this.rankKicker(fiveCardHand);
-          rank = 292; + kickerVal;
-          return rank;
         }
+
+      if ((fiveCardHand.indexOf(Cards.KingClubs) > -1) && (fiveCardHand.indexOf(Cards.KingDiamonds) > -1) && (fiveCardHand.indexOf(Cards.KingHearts) > -1) && (fiveCardHand.indexOf(Cards.KingSpades) > -1)) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.King);
+        rank = 291;
       }
+
+      if ((fiveCardHand.indexOf(Cards.QueenClubs) > -1) && (fiveCardHand.indexOf(Cards.QueenDiamonds) > -1) && (fiveCardHand.indexOf(Cards.QueenHearts) > -1) && (fiveCardHand.indexOf(Cards.QueenSpades) > -1)) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Queen);
+        rank = 291;
+      }
+
+      if ((fiveCardHand.indexOf(Cards.JackClubs) > -1) && (fiveCardHand.indexOf(Cards.JackDiamonds) > -1) && (fiveCardHand.indexOf(Cards.JackHearts) > -1) && (fiveCardHand.indexOf(Cards.JackSpades) > -1)) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Jack);
+        rank = 291;
+      }
+
+      if ((fiveCardHand.indexOf(Cards.TenClubs) > -1) && (fiveCardHand.indexOf(Cards.TenDiamonds) > -1) && (fiveCardHand.indexOf(Cards.TenHearts) > -1) && (fiveCardHand.indexOf(Cards.TenSpades) > -1)) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ten);
+        rank = 291;
+      }
+
+      if ((fiveCardHand.indexOf(Cards.NineClubs) > -1) && (fiveCardHand.indexOf(Cards.NineDiamonds) > -1) && (fiveCardHand.indexOf(Cards.NineHearts) > -1) && (fiveCardHand.indexOf(Cards.NineSpades) > -1)) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Nine);
+        rank = 291;
+      }
+
+      if ((fiveCardHand.indexOf(Cards.EightClubs) > -1) && (fiveCardHand.indexOf(Cards.EightDiamonds) > -1) && (fiveCardHand.indexOf(Cards.EightHearts) > -1) && (fiveCardHand.indexOf(Cards.EightSpades) > -1)) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Eight);
+        rank = 291;
+      }
+
+      if ((fiveCardHand.indexOf(Cards.SevenClubs) > -1) && (fiveCardHand.indexOf(Cards.SevenDiamonds) > -1) && (fiveCardHand.indexOf(Cards.SevenHearts) > -1) && (fiveCardHand.indexOf(Cards.SevenSpades) > -1)) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Seven);
+        rank = 291;
+      }
+
+      if ((fiveCardHand.indexOf(Cards.SixClubs) > -1) && (fiveCardHand.indexOf(Cards.SixDiamonds) > -1) && (fiveCardHand.indexOf(Cards.SixHearts) > -1) && (fiveCardHand.indexOf(Cards.SixSpades) > -1)) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Six);
+        rank = 291;
+      }
+
+      if ((fiveCardHand.indexOf(Cards.FiveClubs) > -1) && (fiveCardHand.indexOf(Cards.FiveDiamonds) > -1) && (fiveCardHand.indexOf(Cards.FiveHearts) > -1) && (fiveCardHand.indexOf(Cards.FiveSpades) > -1)) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Five);
+        rank = 291;
+      }
+
+      if ((fiveCardHand.indexOf(Cards.FourClubs) > -1) && (fiveCardHand.indexOf(Cards.FourDiamonds) > -1) && (fiveCardHand.indexOf(Cards.FourHearts) > -1) && (fiveCardHand.indexOf(Cards.FourSpades) > -1)) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Four);
+        rank = 291;
+      }
+
+      if ((fiveCardHand.indexOf(Cards.ThreeClubs) > -1) && (fiveCardHand.indexOf(Cards.ThreeDiamonds) > -1) && (fiveCardHand.indexOf(Cards.ThreeHearts) > -1) && (fiveCardHand.indexOf(Cards.ThreeSpades) > -1)) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Three);
+        rank = 291;
+      }
+
+      if ((fiveCardHand.indexOf(Cards.TwoClubs) > -1) && (fiveCardHand.indexOf(Cards.TwoDiamonds) > -1) && (fiveCardHand.indexOf(Cards.TwoHearts) > -1) && (fiveCardHand.indexOf(Cards.TwoSpades) > -1)) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Two);
+        rank = 291;
+      }
+
+      // If we hit quads calc kicker value and return total.
+      if (rank !== 0) {
+        kickerVal = this.rankKicker(fiveCardHand);
+        rank += kickerVal;
+        return rank;
+      }
+    }
+
 
 
     return rank;

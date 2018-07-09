@@ -16,7 +16,7 @@ export namespace Cards {
     export const TwoClubs: Card = new Card(Suit.Club, Rank.Two);
     
     export const AceDiamonds: Card = new Card(Suit.Diamond, Rank.Ace);
-    export const KingDiamond: Card = new Card(Suit.Diamond, Rank.King);
+    export const KingDiamonds: Card = new Card(Suit.Diamond, Rank.King);
     export const QueenDiamonds: Card = new Card(Suit.Diamond, Rank.Queen);
     export const JackDiamonds: Card = new Card(Suit.Diamond, Rank.Jack);
     export const TenDiamonds: Card = new Card(Suit.Diamond, Rank.Ten);
