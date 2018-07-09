@@ -506,8 +506,429 @@ class App extends React.Component<{}, IAppState> {
         fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Two);
         rank = 100 + this.rankKickers(fiveCardHand); 
       }
+
       if(rank !== 0){ console.log('Three of a Kind'); }
+    }
+    
+    //Two pair
+    if(rank === 0){
+      // If pair of Aces and another Pair
+      if(this.countRank(fiveCardHand, Rank.Ace) === 2) {
+        if (this.countRank(fiveCardHand, Rank.King) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ace);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.King);
+          rank = 99 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Queen) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ace);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Queen);
+          rank = 98 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Jack) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ace);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Jack);
+          rank = 97 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Ten) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ace);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ten);
+          rank = 96 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Nine) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ace);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Nine);
+          rank = 95 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Eight) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ace);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Eight);
+          rank = 94 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Seven) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ace);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Seven);
+          rank = 93 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Six) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ace);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Six);
+          rank = 92 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Five) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ace);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Five);
+          rank = 91 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Four) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ace);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Four);
+          rank = 90 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Three) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ace);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Three);
+          rank = 89 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Two) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ace);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Two);
+          rank = 88 + this.rankKickers(fiveCardHand); 
+        }
+      } else if(this.countRank(fiveCardHand, Rank.King) === 2) {
+        if (this.countRank(fiveCardHand, Rank.Queen) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.King);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Queen);
+          rank = 87 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Jack) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.King);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Jack);
+          rank = 86 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Ten) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.King);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ten);
+          rank = 85 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Nine) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.King);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Nine);
+          rank = 84 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Eight) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.King);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Eight);
+          rank = 83 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Seven) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.King);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Seven);
+          rank = 82 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Six) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.King);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Six);
+          rank = 81 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Five) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.King);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Five);
+          rank = 80 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Four) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.King);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Four);
+          rank = 79 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Three) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.King);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Three);
+          rank = 78 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Two) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.King);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Two);
+          rank = 77 + this.rankKickers(fiveCardHand); 
+        }
+      } else if(this.countRank(fiveCardHand, Rank.Queen) === 2) {
+        if (this.countRank(fiveCardHand, Rank.Jack) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Queen);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Jack);
+          rank = 76 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Ten) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Queen);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ten);
+          rank = 75 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Nine) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Queen);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Nine);
+          rank = 74 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Eight) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Queen);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Eight);
+          rank = 73 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Seven) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Queen);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Seven);
+          rank = 72 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Six) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Queen);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Six);
+          rank = 71 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Five) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Queen);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Five);
+          rank = 70 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Four) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Queen);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Four);
+          rank = 69 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Three) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Queen);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Three);
+          rank = 68 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Two) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Queen);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Two);
+          rank = 67 + this.rankKickers(fiveCardHand); 
+        }
+      } else if(this.countRank(fiveCardHand, Rank.Jack) === 2) {
+        if (this.countRank(fiveCardHand, Rank.Ten) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Jack);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ten);
+          rank = 66 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Nine) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Jack);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Nine);
+          rank = 65 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Eight) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Jack);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Eight);
+          rank = 64 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Seven) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Jack);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Seven);
+          rank = 63 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Six) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Jack);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Six);
+          rank = 62 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Five) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Jack);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Five);
+          rank = 61 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Four) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Jack);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Four);
+          rank = 60 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Three) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Jack);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Three);
+          rank = 59 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Two) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Jack);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Two);
+          rank = 58 + this.rankKickers(fiveCardHand); 
+        }
+      } else if(this.countRank(fiveCardHand, Rank.Ten) === 2) {
+        if (this.countRank(fiveCardHand, Rank.Nine) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ten);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Nine);
+          rank = 57 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Eight) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ten);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Eight);
+          rank = 56 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Seven) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ten);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Seven);
+          rank = 55 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Six) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ten);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Six);
+          rank = 54 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Five) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ten);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Five);
+          rank = 53 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Four) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ten);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Four);
+          rank = 52 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Three) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ten);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Three);
+          rank = 51 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Two) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ten);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Two);
+          rank = 50 + this.rankKickers(fiveCardHand); 
+        }
+      } else if(this.countRank(fiveCardHand, Rank.Nine) === 2) {
+        if(this.countRank(fiveCardHand, Rank.Eight) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Nine);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Eight);
+          rank = 49 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Seven) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Nine);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Seven);
+          rank = 48 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Six) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Nine);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Six);
+          rank = 47 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Five) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Nine);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Five);
+          rank = 46 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Four) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Nine);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Four);
+          rank = 45 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Three) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Nine);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Three);
+          rank = 44 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Two) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Nine);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Two);
+          rank = 43 + this.rankKickers(fiveCardHand); 
+        }
+      } else if(this.countRank(fiveCardHand, Rank.Eight) === 2) {
+        if (this.countRank(fiveCardHand, Rank.Seven) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Eight);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Seven);
+          rank = 42 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Six) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Eight);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Six);
+          rank = 41 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Five) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Eight);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Five);
+          rank = 40 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Four) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Eight);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Four);
+          rank = 39 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Three) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Eight);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Three);
+          rank = 38 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Two) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Eight);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Two);
+          rank = 37 + this.rankKickers(fiveCardHand); 
+        }
+      } else if(this.countRank(fiveCardHand, Rank.Seven) === 2) {
+        if (this.countRank(fiveCardHand, Rank.Six) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Seven);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Six);
+          rank = 36 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Five) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Seven);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Five);
+          rank = 35 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Four) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Seven);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Four);
+          rank = 34 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Three) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Seven);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Three);
+          rank = 33 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Two) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Seven);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Two);
+          rank = 32 + this.rankKickers(fiveCardHand); 
+        }
+      } else if(this.countRank(fiveCardHand, Rank.Six) === 2) {
+        if (this.countRank(fiveCardHand, Rank.Five) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Six);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Five);
+          rank = 31 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Four) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Six);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Four);
+          rank = 30 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Three) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Six);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Three);
+          rank = 29 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Two) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Six);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Two);
+          rank = 28 + this.rankKickers(fiveCardHand); 
+        }
+      } else if(this.countRank(fiveCardHand, Rank.Five) === 2) {
+        if (this.countRank(fiveCardHand, Rank.Four) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Five);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Four);
+          rank = 27 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Three) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Five);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Three);
+          rank = 26 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Two) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Five);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Two);
+          rank = 25 + this.rankKickers(fiveCardHand); 
+        }
+      } else if(this.countRank(fiveCardHand, Rank.Four) === 2) {
+        if (this.countRank(fiveCardHand, Rank.Three) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Four);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Three);
+          rank = 24 + this.rankKickers(fiveCardHand); 
+        } else if (this.countRank(fiveCardHand, Rank.Two) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Four);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Two);
+          rank = 23 + this.rankKickers(fiveCardHand); 
+        }
+      } else if(this.countRank(fiveCardHand, Rank.Three) === 2) {
+        if (this.countRank(fiveCardHand, Rank.Two) === 2) {
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Three);
+          fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Two);
+          rank = 22 + this.rankKickers(fiveCardHand); 
+        }
+      }
+      
+      if(rank !== 0){console.log('Two Pair'); }
+    }
+    
+    // One Pair
+    if(rank === 0){
+      if(this.countRank(fiveCardHand, Rank.Ace) === 2) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ace);
+        rank = 21 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.King) === 2) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.King);
+        rank = 20 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Queen) === 2) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Queen);
+        rank = 19 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Jack) === 2) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Jack);
+        rank = 18 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Ten) === 2) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ten);
+        rank = 17 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Nine) === 2) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Nine);
+        rank = 16 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Eight) === 2) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Eight);
+        rank = 15 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Seven) === 2) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Seven);
+        rank = 14 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Six) === 2) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Six);
+        rank = 13 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Five) === 2) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Five);
+        rank = 12 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Four) === 2) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Four);
+        rank = 11 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Three) === 2) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Three);
+        rank = 10 + this.rankKickers(fiveCardHand); 
+      } else if(this.countRank(fiveCardHand, Rank.Two) === 2) {
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Two);
+        rank = 9 + this.rankKickers(fiveCardHand); 
+      }
+      if(rank !== 0){console.log('Pair'); }
+    }
+
+    // High Card
+    if(rank === 0){
+      if(this.countRank(fiveCardHand, Rank.Ace) > 0) { 
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ace);
+        rank = 8 + this.rankKickers(fiveCardHand);
+      } else if(this.countRank(fiveCardHand, Rank.King) > 0) { 
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.King);
+        rank = 7 + this.rankKickers(fiveCardHand);
+      } else if(this.countRank(fiveCardHand, Rank.Queen) > 0) { 
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Queen);
+        rank = 6 + this.rankKickers(fiveCardHand);
+      } else if(this.countRank(fiveCardHand, Rank.Jack) > 0) { 
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Jack);
+        rank = 5 + this.rankKickers(fiveCardHand);
+      } else if(this.countRank(fiveCardHand, Rank.Ten) > 0) { 
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Ten);
+        rank = 4 + this.rankKickers(fiveCardHand);
+      } else if(this.countRank(fiveCardHand, Rank.Nine) > 0) { 
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Nine);
+        rank = 3 + this.rankKickers(fiveCardHand);
+      } else if(this.countRank(fiveCardHand, Rank.Eight) > 0) { 
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Eight);
+        rank = 2 + this.rankKickers(fiveCardHand);
+      } else if(this.countRank(fiveCardHand, Rank.Seven) > 0) { 
+        fiveCardHand = fiveCardHand.filter((card: Card) => card.rank !== Rank.Seven);
+        rank = 1 + this.rankKickers(fiveCardHand);
+      }
+      if(rank !== 0){ console.log('High Card'); }
   }
+
     return rank;
   }
 
