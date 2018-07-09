@@ -97,7 +97,7 @@ class App extends React.Component<{}, IAppState> {
     // A hand has 7 possible cards and we need the 
     // combination of 5 that makes the strongest hand 
     // rank and then return that hand's score value
-    let currentHand: Card[] = sevenCardHand;
+    const currentHand: Card[] = sevenCardHand;
     const extraCards: Card[] = [];
     let highestScore: number = 0;
 
@@ -110,7 +110,6 @@ class App extends React.Component<{}, IAppState> {
 
     for(let i=0; i<currentHand.length; i++) {
       for(let y=1; y<3; y++) {
-          currentHand = sevenCardHand;
           currentHand.splice(i, 1);
           currentHand.splice(y, 1);
       }
@@ -510,7 +509,7 @@ class App extends React.Component<{}, IAppState> {
       if(rank !== 0){ console.log('Three of a Kind'); }
     }
     
-    //Two pair
+    // Two pair
     if(rank === 0){
       // If pair of Aces and another Pair
       if(this.countRank(fiveCardHand, Rank.Ace) === 2) {
@@ -927,8 +926,7 @@ class App extends React.Component<{}, IAppState> {
         rank = 1 + this.rankKickers(fiveCardHand);
       }
       if(rank !== 0){ console.log('High Card'); }
-  }
-
+    } 
     return rank;
   }
 
@@ -1067,28 +1065,28 @@ class App extends React.Component<{}, IAppState> {
   public countSuit(cardHand: Card[], suit: Suit): number { 
     let numCounted: number = 0;
     if(suit === Suit.Club) {
-      const copyHand = cardHand;
+      const copyHand: Card[] = cardHand.slice();
       while(copyHand.length > 0) {
         if (copyHand.splice(0,1)[0].suit === Suit.Club) numCounted++;
       }
     }
 
     if(suit === Suit.Diamond) {
-      const copyHand = cardHand;
+      const copyHand: Card[] = cardHand.slice();
       while(copyHand.length > 0) {
         if (copyHand.splice(0,1)[0].suit === Suit.Diamond) numCounted++;
       }
     }
 
     if(suit === Suit.Heart) {
-      const copyHand = cardHand;
+      const copyHand: Card[] = cardHand.slice();
       while(copyHand.length > 0) {
         if (copyHand.splice(0,1)[0].suit === Suit.Heart) numCounted++;
       }
     }
 
     if(suit === Suit.Spade) {
-      const copyHand = cardHand;
+      const copyHand: Card[] = cardHand.slice();
       while(copyHand.length > 0) {
         if (copyHand.splice(0,1)[0].suit === Suit.Spade) numCounted++;
       }
