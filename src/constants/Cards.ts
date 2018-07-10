@@ -57,3 +57,4 @@ export namespace Cards {
     export const ThreeSpades: Card = new Card(Suit.Spade, Rank.Three);
     export const TwoSpades: Card = new Card(Suit.Spade, Rank.Two);
 }
+export default Cards;

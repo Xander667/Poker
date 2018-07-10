@@ -82,24 +82,24 @@ export class Card {
   }
 
   export enum Suit {
-     Spade,
-     Heart,
-     Diamond,
-     Club
+     Spade = "Spade",
+     Heart = "Heart",
+     Diamond = "Diamond",
+     Club = "Club"
    }
   
    export enum Rank {
-    Two,
-    Three,
-    Four,
-    Five,
-    Six,
-    Seven,
-    Eight,
-    Nine,
-    Ten,
-    Jack,
-    Queen,
-    King,
-    Ace
+    Two = "Two",
+    Three = "Three",
+    Four = "Four",
+    Five = "Five",
+    Six = "Six",
+    Seven = "Seven",
+    Eight = "Eight",
+    Nine = "Nine",
+    Ten = "Ten",
+    Jack = "Jack",
+    Queen = "Queen",
+    King = "King",
+    Ace = "Ace"
   }

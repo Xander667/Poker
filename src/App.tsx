@@ -5,7 +5,7 @@ import './App.css';
 
 import { logo } from './logo.svg';
 
-import { Cards } from './constants/Cards';
+import Cards from './constants/Cards';
 import { Deck } from './models/Deck';
 import { Hand } from './models/Hand';
 
@@ -33,6 +33,7 @@ class App extends React.Component<{}, IAppState> {
     bigHand.push(this.state.board.cards[2]);
     bigHand.push(this.state.board.cards[3]);
     bigHand.push(this.state.board.cards[4]);
+
 
     return (
       <div className="App">
