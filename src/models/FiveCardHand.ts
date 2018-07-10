@@ -11,9 +11,12 @@ export class FiveCardHand {
     // Count how many of a rank are in a hand, e.g. how many A in AAAQQ
     public countOfRank(rank: Rank): number {
         let count: number = 0;
-        if(this.containsRank(rank)) { 
-            count++; 
-        }
+        this.cards.forEach(cardInHand => {
+            if(cardInHand.rank === rank) { 
+                count++; 
+            }
+        });
+        
         return count;
     }
 
