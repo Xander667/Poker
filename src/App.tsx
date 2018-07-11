@@ -102,13 +102,13 @@ class App extends React.Component<{}, IAppState> {
   }
 
   // Takes a hand and returns an int score
-  public scoreHand(sevenCardHand: Card[]): number {
+  public scoreHand(sevenCardHand: Card[]): { score: number, handMessage: string} {
     // A hand has 7 possible cards and we need the 
     // combination of 5 that makes the strongest hand 
     // rank and then return that hand's score value
     const currentHand: Card[] = sevenCardHand;
     const extraCards: Card[] = [];
-    let highestScore: number = 0;
+    let highestScore: { rank: number, message: string} = { 0, "Invalid"};
 
     // Add first two cards to extra set and remove form current hand.
     extraCards.push(sevenCardHand[0]);
@@ -124,11 +124,14 @@ class App extends React.Component<{}, IAppState> {
         currentHand.splice(0, 1);
 
         currentHand.push(extraCards[0]);
-        if (highestScore < this.getHandValue(currentHand)) { highestScore = this.getHandValue(currentHand) };
-      }
+        const result1 = this.getHandValue(currentHand);
+        const result2 = this.getHandValue(currentHand);
+        if (highestScore < result2.rank) {
+          highestScore = result2.rank;
+          }
+        }
     }
-
-    return highestScore;
+    return { , };
   }
 
   public doesIncludeRank(cards: Card[], rank: Rank): boolean {
@@ -164,10 +167,11 @@ class App extends React.Component<{}, IAppState> {
       return false;
     }
 
-  public getHandValue(cards: Card[]): number {
+  public getHandValue(cards: Card[]): { rank: number, handMessage: string } {
     let rank: number = 0;
     let kickerVal: number = 0;
     const fiveCardHand: FiveCardHand = new FiveCardHand(cards);
+    let handMessage: string = "Invalid Hand";
 
     // Four of a kind
     if(rank === 0) {
@@ -240,6 +244,7 @@ class App extends React.Component<{}, IAppState> {
       if (rank !== 0) {
         kickerVal = this.rankKickers(cards);
         rank += kickerVal;
+        handMessage = "Four of a kind";
       }
     }
 
@@ -401,7 +406,7 @@ class App extends React.Component<{}, IAppState> {
       if(fiveCardHand.countOfRank(Rank.Two) === 3 && fiveCardHand.countOfRank(Rank.Five) === 2 && rank === 0){rank = 126; }
       if(fiveCardHand.countOfRank(Rank.Two) === 3 && fiveCardHand.countOfRank(Rank.Four) === 2 && rank === 0){rank = 125; }
       if(fiveCardHand.countOfRank(Rank.Two) === 3 && fiveCardHand.countOfRank(Rank.Three) === 2 && rank === 0){rank = 124; }
-      if(rank !== 0){ console.log('Full House'); }
+      if(rank !== 0){ handMessage =  'Full House'; }
     }
 
     // Flush & Straight Flush
@@ -459,7 +464,10 @@ class App extends React.Component<{}, IAppState> {
       if ((cards.indexOf(Cards.FourHearts) > -1) && (cards.indexOf(Cards.AceHearts) > -1) && (cards.indexOf(Cards.TwoHearts) > -1) && (cards.indexOf(Cards.ThreeHearts) > -1) && (cards.indexOf(Cards.FiveHearts) > -1)) { rank = 293; }
       if ((cards.indexOf(Cards.FourSpades) > -1) && (cards.indexOf(Cards.AceSpades) > -1) && (cards.indexOf(Cards.TwoSpades) > -1) && (cards.indexOf(Cards.ThreeSpades) > -1) && (cards.indexOf(Cards.FiveSpades) > -1)) { rank = 293; }
 
-      if(rank === 123){rank = rank + this.rankKickers(cards);}
+      if(rank === 123){
+        rank = rank + this.rankKickers(cards);
+        handMessage = "Flush";
+      }
     }
 
     // Straight
@@ -474,7 +482,7 @@ class App extends React.Component<{}, IAppState> {
       if((this.doesIncludeRank(cards, Rank.Five) && (this.doesIncludeRank(cards, Rank.Six)) && (this.doesIncludeRank(cards, Rank.Seven)) && (this.doesIncludeRank(cards, Rank.Three)) && (this.doesIncludeRank(cards, Rank.Four)))) { rank = 115; }
       if((this.doesIncludeRank(cards, Rank.Five) && (this.doesIncludeRank(cards, Rank.Six)) && (this.doesIncludeRank(cards, Rank.Two)) && (this.doesIncludeRank(cards, Rank.Three)) && (this.doesIncludeRank(cards, Rank.Four)))) { rank = 114; }
       if((this.doesIncludeRank(cards, Rank.Five) && (this.doesIncludeRank(cards, Rank.Ace)) && (this.doesIncludeRank(cards, Rank.Two)) && (this.doesIncludeRank(cards, Rank.Three)) && (this.doesIncludeRank(cards, Rank.Four)))) { rank = 113; }
-      if(rank !== 0){ console.log('Straight'); }
+      if(rank !== 0){ handMessage = 'Straight'; }
     }
 
     // Three of a kind
@@ -520,7 +528,7 @@ class App extends React.Component<{}, IAppState> {
         rank = 100 + this.rankKickers(cards); 
       }
 
-      if(rank !== 0){ console.log('Three of a Kind'); }
+      if(rank !== 0){ handMessage = 'Three of a Kind'; }
     }
     
     // Two pair
@@ -864,7 +872,7 @@ class App extends React.Component<{}, IAppState> {
         }
       }
       
-      if(rank !== 0){console.log('Two Pair'); }
+      if(rank !== 0){handMessage = 'Two Pair'; }
     }
     
     // One Pair
@@ -939,9 +947,10 @@ class App extends React.Component<{}, IAppState> {
         cards = cards.filter((card: Card) => card.rank !== Rank.Seven);
         rank = 1 + this.rankKickers(cards);
       }
-      if(rank !== 0){ console.log('High Card'); }
+      if(rank !== 0){ handMessage = 'High Card'; }
     } 
-    return rank;
+
+    return { rank, handMessage };
   }
 
   public rankKickers(card: Card[]): number {
