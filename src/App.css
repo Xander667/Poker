@@ -26,6 +26,14 @@
   display: flex;
 }
 
+#handResults2 {
+  background-color: palevioletred;
+}
+
+#handResults1 {
+  background-color: royalblue;
+}
+
 #handArea {
   margin-top: 550px;
   position: absolute;
