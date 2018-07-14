@@ -1,0 +1,75 @@
+.App {
+  text-align: center;
+}
+
+#pokerTable {
+  height: 400px;
+  width: 50%;
+  background-color: green;
+
+  position: absolute;
+  z-index: -1;
+  margin-left: 25%;
+  margin-top: 200px;
+}
+
+#dealCardsButton {
+  height: 30px;
+  width: 100px;
+  margin-left: 35%;
+  margin-top: 550px
+}
+
+#boardArea {
+  margin-top: 350px;
+  position: absolute;
+  display: flex;
+}
+
+#handResults2 {
+  background-color: palevioletred;
+}
+
+#handResults1 {
+  background-color: royalblue;
+}
+
+#handArea {
+  margin-top: 550px;
+  position: absolute;
+  display: flex;
+}
+
+#card {
+  height: 80px;
+  width: 100px;
+  background-color: white;
+  border: black 1px solid;
+
+  margin-left: 2%;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
