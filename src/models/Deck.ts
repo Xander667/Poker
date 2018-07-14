@@ -880,16 +880,17 @@ export class Deck {
     currentHand.splice(0, 1);
     highestScore = this.getHandValue(currentHand);
 
-    for(const hand of currentHand) {
+    for(let i=0; i<currentHand.length; i++) {
         for(let y=0; y<3; y++) {
         // Remove first from our hand
-        extraCards.push(hand);
-        currentHand.splice(0, 1);
+        extraCards.push(currentHand[i]);
+        currentHand.splice(i, 1);
 
-        currentHand.push(extraCards[0]);
+        currentHand.push(extraCards[y]);
+        extraCards.splice(y, 1);
         const result2 = this.getHandValue(currentHand);
         if (highestScore.score < result2.score) {
-            highestScore.score = result2.score;
+              highestScore= result2;
             }
         }
     }

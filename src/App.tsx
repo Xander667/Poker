@@ -3,10 +3,13 @@ import { Board } from "../src/models/Board";
 import { Card, Suit} from "../src/models/Card";
 import './App.css';
 
+// import Cards from './constants/Cards';
+
 import { logo } from './logo.svg';
 
 import { Deck } from './models/Deck';
 import { Hand } from './models/Hand';
+import { HandResult } from './models/HandResult';
 
 interface IAppState {
   deck: Deck,
@@ -20,6 +23,14 @@ class App extends React.Component<{}, IAppState> {
   constructor(props: {}) {
     super(props);
     const deck: Deck = new Deck();
+
+    // Test Hands
+    // const h1: Hand = new Hand(Cards.AceClubs, Cards.FourSpades);
+    // const h2: Hand = new Hand(Cards.SevenDiamonds, Cards.TenDiamonds);
+
+    // Test Board
+    // const board: Board = new Board(Cards.TenHearts, Cards.NineHearts, Cards.ThreeHearts, Cards.SevenSpades, Cards.JackHearts);
+    // this.state = { deck, hand1: h1, hand2: h2, board};
     this.state = { deck, hand1: deck.getHand(), hand2: deck.getHand(), board: deck.getBoard() };
   }
 
@@ -77,12 +88,13 @@ class App extends React.Component<{}, IAppState> {
     fullhand.push(hand.card1);
     fullhand.push(hand.card2);
     const divId: string = "handResults" + playerNumber.toString();
+    const result: HandResult = this.state.deck.scoreHand(fullhand);
     return(
       <div id="handArea" style={style}>
         <div id={divId}>
           Player # {  playerNumber } <br/>
-          Hand: { this.state.deck.scoreHand(fullhand).handName } <br/>
-          Score: { this.state.deck.scoreHand(fullhand).score }
+          Hand: { result.handName } <br/>
+          Score: { result.score }
         </div>
         {this.renderCard(hand.card1)}
         {this.renderCard(hand.card2)}
