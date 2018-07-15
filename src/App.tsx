@@ -25,13 +25,13 @@ class App extends React.Component<{}, IAppState> {
     const deck: Deck = new Deck();
 
     // Test Hands
-    // const h1: Hand = new Hand(Cards.AceClubs, Cards.FourSpades);
-    // const h2: Hand = new Hand(Cards.SevenDiamonds, Cards.TenDiamonds);
+    // const h1: Hand = new Hand(Cards.QueenClubs, Cards.ThreeClubs);
+    // const h2: Hand = new Hand(Cards.QueenClubs, Cards.ThreeClubs);
 
     // Test Board
-    // const board: Board = new Board(Cards.TenHearts, Cards.NineHearts, Cards.ThreeHearts, Cards.SevenSpades, Cards.JackHearts);
+    // const board: Board = new Board(Cards.QueenDiamonds, Cards.QueenSpades, Cards.ThreeHearts, Cards.FourClubs, Cards.FiveClubs);
     // this.state = { deck, hand1: h1, hand2: h2, board};
-    this.state = { deck, hand1: deck.getHand(), hand2: deck.getHand(), board: deck.getBoard() };
+     this.state = { deck, hand1: deck.getHand(), hand2: deck.getHand(), board: deck.getBoard() };
   }
 
   public render() {
@@ -94,12 +94,26 @@ class App extends React.Component<{}, IAppState> {
         <div id={divId}>
           Player # {  playerNumber } <br/>
           Hand: { result.handName } <br/>
-          Score: { result.score }
+          Score: { result.score } <br/>
+          Best Hand: { this.renderStrongHand(result.hand)}
         </div>
         {this.renderCard(hand.card1)}
         {this.renderCard(hand.card2)}
       </div>
     );
+  }
+
+  public renderStrongHand(hand :Card[]): JSX.Element[] {
+    const resultingJSX: JSX.Element[] = [];
+    for(let i=0; i<hand.length; i++) {
+      const ch: Card = hand[i];
+      resultingJSX.push(
+        <div>
+          { ch.rank.toString() + ch.suit.toString() }
+        </div>
+      );
+    }
+    return resultingJSX;
   }
 
   public renderCard(card: Card): JSX.Element {
