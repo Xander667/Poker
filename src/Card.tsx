@@ -2,7 +2,11 @@ import * as React from 'react';
 import { CardModel, Suit} from "../src/models/CardModel";
 import './Card.css';
 interface ICardProps {
+    /** The model of the card we want to render */
     card: CardModel;
+
+    /** Optional prop to decide if we should render full sized cards (default) or a mini version for results and chat */
+    miniCards?: boolean;
 }
 
 class Card extends React.Component<ICardProps, {}> {
@@ -12,13 +16,21 @@ class Card extends React.Component<ICardProps, {}> {
   }
 
   public render() {
-    return (
-      <div id="card">
-        { this.renderTopSuit() }
-        { this.renderMiddleRankSuit() }
-        { this.renderBottomSuit() }
-      </div>
-    );
+    if(this.props.miniCards) {
+      return (
+        <div id="miniCard">
+          { this.renderMiddleRankSuit() }
+        </div>
+      );
+    } else {
+      return (
+        <div id="card">
+          { this.renderTopSuit() }
+          { this.renderMiddleRankSuit() }
+          { this.renderBottomSuit() }
+        </div>
+      );
+    }
   }
 
   public renderMiddleRankSuit(): JSX.Element {
@@ -48,45 +60,34 @@ class Card extends React.Component<ICardProps, {}> {
 
   // Returns a JSX with the correct suit
   public renderSuit(suit: Suit): JSX.Element {
-    let style: React.CSSProperties = {};
+    const style: React.CSSProperties = {};
     
-    if(suit === Suit.Club || suit === Suit.Spade) {
-      style = {
-        backgroundColor: "white"
-      }; 
-    } else if (suit === Suit.Diamond || suit === Suit.Heart) {
-      style = {
-        color: "red"
-      }; 
+    if(this.props.miniCards) {
+      style.height = "10px";
+      style.position = "relative";
+      style.bottom = "10px";
     }
 
+    let suitUnicode: string = "ErrorSuit";
     if(suit === Suit.Club) {
-      return (
-        <div style={style}>
-          &clubs;
-        </div> 
-      );
+      style.backgroundColor = "white";
+      suitUnicode = "\u2663";
     } else if(suit === Suit.Diamond) {
-      return (
-        <div style={style}>
-          &diams;
-        </div> 
-      );
+      style.color = "red"
+      suitUnicode = "\u2666";
     } else if(suit === Suit.Heart) {
-      return (
-        <div style={style}>
-          &hearts;
-        </div> 
-      );
-    } else if(suit === Suit.Spade) {
-      return (
-        <div style={style}>
-          &spades;
-        </div> 
-      );
+      style.color = "red"
+      suitUnicode = "\u2665";
+    }else if(suit === Suit.Spade) {
+      style.color = "black";
+      style.backgroundColor = "white";
+      suitUnicode = "\u2660";
     }
+
     return (
-      <div/>
+      <div style={style}>
+        { suitUnicode}
+      </div>
     );
   }
 }

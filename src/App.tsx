@@ -103,17 +103,12 @@ class App extends React.Component<{}, IAppState> {
     );
   }
 
-  public renderStrongHand(hand :CardModel[]): JSX.Element[] {
-    const resultingJSX: JSX.Element[] = [];
-    for(let i=0; i<hand.length; i++) {
-      const ch: CardModel = hand[i];
-      resultingJSX.push(
-        <div>
-          { ch.rank.toString() + ch.suit.toString() }
-        </div>
-      );
-    }
-    return resultingJSX;
+  public renderStrongHand(hand :CardModel[]): JSX.Element {
+    return (
+      <div>
+        <Card card={hand[0]} miniCards={true}/>
+      </div>  
+    );
   }
 
   public renderDealCardsButton(): JSX.Element {

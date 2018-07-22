@@ -8,6 +8,16 @@
     margin-left: 2%;
   }
 
+#miniCard {
+height: 44px;
+width: 20px;
+background-color: white;
+border-radius: 3px;
+border: black 1px solid;
+
+margin-left: 2%;
+}
+
 #top {
     left: 2%;
     width: 10%;
