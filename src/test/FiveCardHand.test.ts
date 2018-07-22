@@ -1,11 +1,11 @@
-import { Card } from '../models/Card';
+import { CardModel } from '../models/CardMosdel';
 import { FiveCardHand } from './../models/FiveCardHand';
 
 import { Cards } from '../constants/Cards';
 
 it('test containsCard() with Four Aces and Eight of Clubs', () => {  
   // Verify 4 Aces
-  const cards: Card[] = [];
+  const cards: CardModel[] = [];
   cards.push(Cards.AceClubs);
   cards.push(Cards.AceDiamonds);
   cards.push(Cards.AceHearts);

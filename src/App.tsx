@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Board } from "../src/models/Board";
-import { Card, Suit} from "../src/models/Card";
+import { CardModel} from "../src/models/CardModel";
 import './App.css';
 
-// import Cards from './constants/Cards';
+import Card from './Card';
 
 import { logo } from './logo.svg';
 
@@ -42,6 +42,7 @@ class App extends React.Component<{}, IAppState> {
           <h1 className="App-title">Welcome to Poker</h1>
         </header>
         { this.renderPokerTable() }
+        <Card card={this.state.hand1.card1.suit}/>
         { this.renderBoardOfCards() }
         { this.renderHands()}
         { this.renderDealCardsButton() }
@@ -84,7 +85,7 @@ class App extends React.Component<{}, IAppState> {
     }
 
     // Player 1 seven cards
-    const fullhand: Card[] = this.state.board.cards.slice();
+    const fullhand: CardModel[] = this.state.board.cards.slice();
     fullhand.push(hand.card1);
     fullhand.push(hand.card2);
     const divId: string = "handResults" + playerNumber.toString();
@@ -103,10 +104,10 @@ class App extends React.Component<{}, IAppState> {
     );
   }
 
-  public renderStrongHand(hand :Card[]): JSX.Element[] {
+  public renderStrongHand(hand :CardModel[]): JSX.Element[] {
     const resultingJSX: JSX.Element[] = [];
     for(let i=0; i<hand.length; i++) {
-      const ch: Card = hand[i];
+      const ch: CardModel = hand[i];
       resultingJSX.push(
         <div>
           { ch.rank.toString() + ch.suit.toString() }
@@ -116,13 +117,12 @@ class App extends React.Component<{}, IAppState> {
     return resultingJSX;
   }
 
-  public renderCard(card: Card): JSX.Element {
+  public renderCard(card: CardModel): JSX.Element {
     return (
       <div id="card">
       { card.getRankName()}
       <br/>
       { card.getSuitName()}
-      { this.renderSuit(card.suit) }
       </div>
     );
   }
@@ -150,50 +150,6 @@ class App extends React.Component<{}, IAppState> {
     const newHand2 = this.state.deck.getHand();
     const newBoard = this.state.deck.getBoard();
     this.setState({hand1: newHand, hand2: newHand2, board: newBoard });
-  }
-
-  // Returns a JSX with the correct suit
-  public renderSuit(suit: Suit): JSX.Element {
-    let style: React.CSSProperties = {};
-    
-    if(suit === Suit.Club || suit === Suit.Spade) {
-      style = {
-        backgroundColor: "white"
-      }; 
-    } else if (suit === Suit.Diamond || suit === Suit.Heart) {
-      style = {
-        backgroundColor: "red"
-      }; 
-    }
-
-    if(suit === Suit.Club) {
-      return (
-        <div style={style}>
-          &clubs;
-        </div> 
-      );
-    } else if(suit === Suit.Diamond) {
-      return (
-        <div style={style}>
-          &diams;
-        </div> 
-      );
-    } else if(suit === Suit.Heart) {
-      return (
-        <div style={style}>
-          &hearts;
-        </div> 
-      );
-    } else if(suit === Suit.Spade) {
-      return (
-        <div style={style}>
-          &spades;
-        </div> 
-      );
-    }
-    return (
-      <div/>
-    );
   }
 }
 export default App;

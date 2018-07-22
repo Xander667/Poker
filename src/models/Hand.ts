@@ -1,10 +1,10 @@
-import { Card } from "./Card";
+import { CardModel } from "./CardModel";
 
 export class Hand {
-    public card1: Card;
-    public card2: Card;
+    public card1: CardModel;
+    public card2: CardModel;
   
-    constructor(card1: Card, card2: Card) {
+    constructor(card1: CardModel, card2: CardModel) {
         if(card1 === card2) {
             throw Error("Can't have two of the same card");
         }

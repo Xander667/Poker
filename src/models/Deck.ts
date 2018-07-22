@@ -1,6 +1,6 @@
 
 import { Board } from "./Board";
-import { Card, Rank, Suit } from "./Card";
+import { CardModel, Rank, Suit } from "./CardModel";
 import { FiveCardHand } from "./FiveCardHand";
 import { Hand } from "./Hand";
 import { HandResult } from "./HandResult";
@@ -8,8 +8,8 @@ import { HandResult } from "./HandResult";
 import Cards from "../constants/Cards";
 
 export class Deck {
-  public availableCards: Card[];
-  public discardedCards: Card[];
+  public availableCards: CardModel[];
+  public discardedCards: CardModel[];
 
   constructor() {
     this.availableCards = [];
@@ -18,12 +18,12 @@ export class Deck {
   }
   
   // Returns all possible combinations size K within set
-  public k_combinations(set: Card[], k: number): Card[][] {
+  public k_combinations(set: CardModel[], k: number): CardModel[][] {
     let cardIterator: number;
     let j: number;
-    let combs: Card[][];
-    let head: Card[];
-    let tailcombs: Card[][];
+    let combs: CardModel[][];
+    let head: CardModel[];
+    let tailcombs: CardModel[][];
     
     // There is no way to take e.g. sets of 5 elements from
     // a set of 4.
@@ -126,7 +126,7 @@ export class Deck {
     return new Board(card1, card2, card3, card4, card5);
   }
 
-  public getHandValue(cards: Card[]): HandResult {
+  public getHandValue(cards: CardModel[]): HandResult {
     let rank: number = 0;
     let kickerVal: number = 0;
     const fiveCardHand: FiveCardHand = new FiveCardHand(cards);
@@ -137,67 +137,67 @@ export class Deck {
     // Four of a kind
     if (rank === 0) {
       if ((cards.indexOf(Cards.AceClubs) > -1) && (cards.indexOf(Cards.AceDiamonds) > -1) && (cards.indexOf(Cards.AceHearts) > -1) && (cards.indexOf(Cards.AceSpades) > -1)) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Ace);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Ace);
         rank = 292;
       }
 
       if ((cards.indexOf(Cards.KingClubs) > -1) && (cards.indexOf(Cards.KingDiamonds) > -1) && (cards.indexOf(Cards.KingHearts) > -1) && (cards.indexOf(Cards.KingSpades) > -1)) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.King);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.King);
         rank = 291;
       }
 
       if ((cards.indexOf(Cards.QueenClubs) > -1) && (cards.indexOf(Cards.QueenDiamonds) > -1) && (cards.indexOf(Cards.QueenHearts) > -1) && (cards.indexOf(Cards.QueenSpades) > -1)) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Queen);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Queen);
         rank = 291;
       }
 
       if ((cards.indexOf(Cards.JackClubs) > -1) && (cards.indexOf(Cards.JackDiamonds) > -1) && (cards.indexOf(Cards.JackHearts) > -1) && (cards.indexOf(Cards.JackSpades) > -1)) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Jack);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Jack);
         rank = 291;
       }
 
       if ((cards.indexOf(Cards.TenClubs) > -1) && (cards.indexOf(Cards.TenDiamonds) > -1) && (cards.indexOf(Cards.TenHearts) > -1) && (cards.indexOf(Cards.TenSpades) > -1)) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Ten);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Ten);
         rank = 291;
       }
 
       if ((cards.indexOf(Cards.NineClubs) > -1) && (cards.indexOf(Cards.NineDiamonds) > -1) && (cards.indexOf(Cards.NineHearts) > -1) && (cards.indexOf(Cards.NineSpades) > -1)) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Nine);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Nine);
         rank = 291;
       }
 
       if ((cards.indexOf(Cards.EightClubs) > -1) && (cards.indexOf(Cards.EightDiamonds) > -1) && (cards.indexOf(Cards.EightHearts) > -1) && (cards.indexOf(Cards.EightSpades) > -1)) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Eight);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Eight);
         rank = 291;
       }
 
       if ((cards.indexOf(Cards.SevenClubs) > -1) && (cards.indexOf(Cards.SevenDiamonds) > -1) && (cards.indexOf(Cards.SevenHearts) > -1) && (cards.indexOf(Cards.SevenSpades) > -1)) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Seven);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Seven);
         rank = 291;
       }
 
       if ((cards.indexOf(Cards.SixClubs) > -1) && (cards.indexOf(Cards.SixDiamonds) > -1) && (cards.indexOf(Cards.SixHearts) > -1) && (cards.indexOf(Cards.SixSpades) > -1)) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Six);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Six);
         rank = 291;
       }
 
       if ((cards.indexOf(Cards.FiveClubs) > -1) && (cards.indexOf(Cards.FiveDiamonds) > -1) && (cards.indexOf(Cards.FiveHearts) > -1) && (cards.indexOf(Cards.FiveSpades) > -1)) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Five);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Five);
         rank = 291;
       }
 
       if ((cards.indexOf(Cards.FourClubs) > -1) && (cards.indexOf(Cards.FourDiamonds) > -1) && (cards.indexOf(Cards.FourHearts) > -1) && (cards.indexOf(Cards.FourSpades) > -1)) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Four);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Four);
         rank = 291;
       }
 
       if ((cards.indexOf(Cards.ThreeClubs) > -1) && (cards.indexOf(Cards.ThreeDiamonds) > -1) && (cards.indexOf(Cards.ThreeHearts) > -1) && (cards.indexOf(Cards.ThreeSpades) > -1)) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Three);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Three);
         rank = 291;
       }
 
       if ((cards.indexOf(Cards.TwoClubs) > -1) && (cards.indexOf(Cards.TwoDiamonds) > -1) && (cards.indexOf(Cards.TwoHearts) > -1) && (cards.indexOf(Cards.TwoSpades) > -1)) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Two);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Two);
         rank = 291;
       }
 
@@ -449,43 +449,43 @@ export class Deck {
     // Three of a kind
     if (rank === 0) {
       if (fiveCardHand.countOfRank(Rank.Ace) === 3) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Ace);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Ace);
         rank = 112 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.King) === 3) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.King);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.King);
         rank = 111 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Queen) === 3) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Queen);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Queen);
         rank = 110 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Jack) === 3) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Jack);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Jack);
         rank = 109 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Ten) === 3) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Ten);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Ten);
         rank = 108 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Nine) === 3) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Nine);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Nine);
         rank = 107 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Eight) === 3) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Eight);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Eight);
         rank = 106 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Seven) === 3) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Seven);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Seven);
         rank = 105 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Six) === 3) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Six);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Six);
         rank = 104 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Five) === 3) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Five);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Five);
         rank = 103 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Four) === 3) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Four);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Four);
         rank = 102 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Three) === 3) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Three);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Three);
         rank = 101 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Two) === 3) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Two);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Two);
         rank = 100 + this.rankKickers(cards);
       }
 
@@ -497,338 +497,338 @@ export class Deck {
       // If pair of Aces and another Pair
       if (fiveCardHand.countOfRank(Rank.Ace) === 2) {
         if (fiveCardHand.countOfRank(Rank.King) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ace);
-          cards = cards.filter((card: Card) => card.rank !== Rank.King);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ace);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.King);
           rank = 99 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Queen) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ace);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Queen);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ace);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Queen);
           rank = 98 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Jack) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ace);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Jack);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ace);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Jack);
           rank = 97 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Ten) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ace);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ten);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ace);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ten);
           rank = 96 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Nine) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ace);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Nine);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ace);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Nine);
           rank = 95 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Eight) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ace);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Eight);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ace);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Eight);
           rank = 94 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Seven) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ace);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Seven);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ace);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Seven);
           rank = 93 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Six) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ace);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Six);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ace);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Six);
           rank = 92 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Five) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ace);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Five);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ace);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Five);
           rank = 91 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Four) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ace);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Four);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ace);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Four);
           rank = 90 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Three) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ace);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Three);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ace);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Three);
           rank = 89 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Two) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ace);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Two);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ace);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Two);
           rank = 88 + this.rankKickers(cards);
         }
       } else if (fiveCardHand.countOfRank(Rank.King) === 2) {
         if (fiveCardHand.countOfRank(Rank.Queen) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.King);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Queen);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.King);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Queen);
           rank = 87 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Jack) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.King);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Jack);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.King);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Jack);
           rank = 86 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Ten) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.King);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ten);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.King);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ten);
           rank = 85 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Nine) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.King);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Nine);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.King);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Nine);
           rank = 84 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Eight) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.King);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Eight);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.King);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Eight);
           rank = 83 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Seven) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.King);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Seven);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.King);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Seven);
           rank = 82 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Six) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.King);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Six);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.King);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Six);
           rank = 81 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Five) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.King);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Five);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.King);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Five);
           rank = 80 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Four) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.King);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Four);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.King);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Four);
           rank = 79 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Three) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.King);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Three);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.King);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Three);
           rank = 78 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Two) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.King);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Two);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.King);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Two);
           rank = 77 + this.rankKickers(cards);
         }
       } else if (fiveCardHand.countOfRank(Rank.Queen) === 2) {
         if (fiveCardHand.countOfRank(Rank.Jack) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Queen);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Jack);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Queen);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Jack);
           rank = 76 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Ten) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Queen);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ten);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Queen);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ten);
           rank = 75 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Nine) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Queen);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Nine);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Queen);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Nine);
           rank = 74 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Eight) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Queen);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Eight);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Queen);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Eight);
           rank = 73 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Seven) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Queen);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Seven);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Queen);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Seven);
           rank = 72 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Six) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Queen);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Six);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Queen);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Six);
           rank = 71 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Five) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Queen);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Five);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Queen);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Five);
           rank = 70 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Four) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Queen);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Four);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Queen);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Four);
           rank = 69 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Three) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Queen);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Three);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Queen);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Three);
           rank = 68 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Two) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Queen);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Two);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Queen);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Two);
           rank = 67 + this.rankKickers(cards);
         }
       } else if (fiveCardHand.countOfRank(Rank.Jack) === 2) {
         if (fiveCardHand.countOfRank(Rank.Ten) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Jack);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ten);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Jack);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ten);
           rank = 66 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Nine) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Jack);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Nine);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Jack);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Nine);
           rank = 65 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Eight) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Jack);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Eight);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Jack);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Eight);
           rank = 64 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Seven) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Jack);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Seven);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Jack);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Seven);
           rank = 63 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Six) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Jack);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Six);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Jack);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Six);
           rank = 62 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Five) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Jack);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Five);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Jack);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Five);
           rank = 61 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Four) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Jack);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Four);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Jack);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Four);
           rank = 60 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Three) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Jack);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Three);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Jack);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Three);
           rank = 59 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Two) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Jack);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Two);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Jack);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Two);
           rank = 58 + this.rankKickers(cards);
         }
       } else if (fiveCardHand.countOfRank(Rank.Ten) === 2) {
         if (fiveCardHand.countOfRank(Rank.Nine) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ten);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Nine);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ten);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Nine);
           rank = 57 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Eight) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ten);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Eight);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ten);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Eight);
           rank = 56 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Seven) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ten);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Seven);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ten);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Seven);
           rank = 55 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Six) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ten);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Six);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ten);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Six);
           rank = 54 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Five) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ten);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Five);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ten);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Five);
           rank = 53 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Four) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ten);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Four);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ten);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Four);
           rank = 52 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Three) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ten);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Three);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ten);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Three);
           rank = 51 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Two) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Ten);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Two);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Ten);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Two);
           rank = 50 + this.rankKickers(cards);
         }
       } else if (fiveCardHand.countOfRank(Rank.Nine) === 2) {
         if (fiveCardHand.countOfRank(Rank.Eight) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Nine);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Eight);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Nine);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Eight);
           rank = 49 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Seven) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Nine);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Seven);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Nine);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Seven);
           rank = 48 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Six) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Nine);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Six);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Nine);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Six);
           rank = 47 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Five) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Nine);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Five);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Nine);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Five);
           rank = 46 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Four) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Nine);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Four);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Nine);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Four);
           rank = 45 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Three) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Nine);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Three);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Nine);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Three);
           rank = 44 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Two) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Nine);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Two);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Nine);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Two);
           rank = 43 + this.rankKickers(cards);
         }
       } else if (fiveCardHand.countOfRank(Rank.Eight) === 2) {
         if (fiveCardHand.countOfRank(Rank.Seven) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Eight);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Seven);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Eight);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Seven);
           rank = 42 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Six) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Eight);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Six);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Eight);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Six);
           rank = 41 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Five) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Eight);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Five);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Eight);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Five);
           rank = 40 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Four) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Eight);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Four);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Eight);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Four);
           rank = 39 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Three) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Eight);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Three);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Eight);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Three);
           rank = 38 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Two) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Eight);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Two);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Eight);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Two);
           rank = 37 + this.rankKickers(cards);
         }
       } else if (fiveCardHand.countOfRank(Rank.Seven) === 2) {
         if (fiveCardHand.countOfRank(Rank.Six) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Seven);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Six);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Seven);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Six);
           rank = 36 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Five) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Seven);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Five);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Seven);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Five);
           rank = 35 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Four) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Seven);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Four);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Seven);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Four);
           rank = 34 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Three) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Seven);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Three);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Seven);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Three);
           rank = 33 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Two) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Seven);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Two);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Seven);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Two);
           rank = 32 + this.rankKickers(cards);
         }
       } else if (fiveCardHand.countOfRank(Rank.Six) === 2) {
         if (fiveCardHand.countOfRank(Rank.Five) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Six);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Five);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Six);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Five);
           rank = 31 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Four) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Six);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Four);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Six);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Four);
           rank = 30 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Three) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Six);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Three);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Six);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Three);
           rank = 29 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Two) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Six);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Two);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Six);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Two);
           rank = 28 + this.rankKickers(cards);
         }
       } else if (fiveCardHand.countOfRank(Rank.Five) === 2) {
         if (fiveCardHand.countOfRank(Rank.Four) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Five);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Four);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Five);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Four);
           rank = 27 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Three) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Five);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Three);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Five);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Three);
           rank = 26 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Two) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Five);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Two);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Five);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Two);
           rank = 25 + this.rankKickers(cards);
         }
       } else if (fiveCardHand.countOfRank(Rank.Four) === 2) {
         if (fiveCardHand.countOfRank(Rank.Three) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Four);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Three);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Four);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Three);
           rank = 24 + this.rankKickers(cards);
         } else if (fiveCardHand.countOfRank(Rank.Two) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Four);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Two);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Four);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Two);
           rank = 23 + this.rankKickers(cards);
         }
       } else if (fiveCardHand.countOfRank(Rank.Three) === 2) {
         if (fiveCardHand.countOfRank(Rank.Two) === 2) {
-          cards = cards.filter((card: Card) => card.rank !== Rank.Three);
-          cards = cards.filter((card: Card) => card.rank !== Rank.Two);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Three);
+          cards = cards.filter((card: CardModel) => card.rank !== Rank.Two);
           rank = 22 + this.rankKickers(cards);
         }
       }
@@ -839,43 +839,43 @@ export class Deck {
     // One Pair
     if (rank === 0) {
       if (fiveCardHand.countOfRank(Rank.Ace) === 2) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Ace);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Ace);
         rank = 21 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.King) === 2) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.King);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.King);
         rank = 20 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Queen) === 2) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Queen);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Queen);
         rank = 19 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Jack) === 2) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Jack);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Jack);
         rank = 18 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Ten) === 2) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Ten);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Ten);
         rank = 17 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Nine) === 2) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Nine);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Nine);
         rank = 16 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Eight) === 2) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Eight);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Eight);
         rank = 15 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Seven) === 2) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Seven);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Seven);
         rank = 14 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Six) === 2) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Six);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Six);
         rank = 13 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Five) === 2) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Five);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Five);
         rank = 12 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Four) === 2) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Four);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Four);
         rank = 11 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Three) === 2) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Three);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Three);
         rank = 10 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Two) === 2) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Two);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Two);
         rank = 9 + this.rankKickers(cards);
       }
       if (rank !== 0) { handMessage = "One Pair" }
@@ -884,28 +884,28 @@ export class Deck {
     // High Card
     if (rank === 0) {
       if (fiveCardHand.countOfRank(Rank.Ace) > 0) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Ace);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Ace);
         rank = 8 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.King) > 0) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.King);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.King);
         rank = 7 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Queen) > 0) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Queen);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Queen);
         rank = 6 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Jack) > 0) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Jack);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Jack);
         rank = 5 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Ten) > 0) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Ten);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Ten);
         rank = 4 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Nine) > 0) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Nine);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Nine);
         rank = 3 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Eight) > 0) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Eight);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Eight);
         rank = 2 + this.rankKickers(cards);
       } else if (fiveCardHand.countOfRank(Rank.Seven) > 0) {
-        cards = cards.filter((card: Card) => card.rank !== Rank.Seven);
+        cards = cards.filter((card: CardModel) => card.rank !== Rank.Seven);
         rank = 1 + this.rankKickers(cards);
       }
       if (rank !== 0) { handMessage = 'High Card'; }
@@ -917,8 +917,8 @@ export class Deck {
   }
 
   // Takes a hand and returns an int score
-  public scoreHand(sevenCardHand: Card[]): HandResult {
-    const combinations: Card[][] = this.k_combinations(sevenCardHand, 5);
+  public scoreHand(sevenCardHand: CardModel[]): HandResult {
+    const combinations: CardModel[][] = this.k_combinations(sevenCardHand, 5);
     let highestScore: HandResult = new HandResult(0, "No Hand");
     let result2: HandResult;
     for(let i=0; i<combinations.length; i++) {
@@ -931,7 +931,7 @@ export class Deck {
     return highestScore;
   }
 
-  public doesIncludeRank(cards: Card[], rank: Rank): boolean {
+  public doesIncludeRank(cards: CardModel[], rank: Rank): boolean {
     // code to remove "o"
     if (rank === Rank.Ace) {
       if ((cards.indexOf(Cards.AceClubs) > -1) && (cards.indexOf(Cards.AceDiamonds) > -1) && (cards.indexOf(Cards.AceHearts) > -1) && (cards.indexOf(Cards.AceSpades) > -1)) { return true; }
@@ -964,7 +964,7 @@ export class Deck {
     return false;
   }
 
-  public rankKickers(card: Card[]): number {
+  public rankKickers(card: CardModel[]): number {
     let i: number;
     let kickerRank: number;
     const myRanks: number[] = [];
@@ -1000,31 +1000,31 @@ export class Deck {
   }
 
   // Counts each unique deck card once and returns number.
-  public countSuit(cardHand: Card[], suit: Suit): number {
+  public countSuit(cardHand: CardModel[], suit: Suit): number {
     let numCounted: number = 0;
     if (suit === Suit.Club) {
-      const copyHand: Card[] = cardHand.slice();
+      const copyHand: CardModel[] = cardHand.slice();
       while (copyHand.length > 0) {
         if (copyHand.splice(0, 1)[0].suit === Suit.Club) numCounted++;
       }
     }
 
     if (suit === Suit.Diamond) {
-      const copyHand: Card[] = cardHand.slice();
+      const copyHand: CardModel[] = cardHand.slice();
       while (copyHand.length > 0) {
         if (copyHand.splice(0, 1)[0].suit === Suit.Diamond) numCounted++;
       }
     }
 
     if (suit === Suit.Heart) {
-      const copyHand: Card[] = cardHand.slice();
+      const copyHand: CardModel[] = cardHand.slice();
       while (copyHand.length > 0) {
         if (copyHand.splice(0, 1)[0].suit === Suit.Heart) numCounted++;
       }
     }
 
     if (suit === Suit.Spade) {
-      const copyHand: Card[] = cardHand.slice();
+      const copyHand: CardModel[] = cardHand.slice();
       while (copyHand.length > 0) {
         if (copyHand.splice(0, 1)[0].suit === Suit.Spade) numCounted++;
       }
@@ -1035,60 +1035,60 @@ export class Deck {
 
   // fills available cards with 52 correct cards
   private fillDeck(): void {
-    this.availableCards.push(new Card(Suit.Club, Rank.Two));
-    this.availableCards.push(new Card(Suit.Club, Rank.Three));
-    this.availableCards.push(new Card(Suit.Club, Rank.Four));
-    this.availableCards.push(new Card(Suit.Club, Rank.Five));
-    this.availableCards.push(new Card(Suit.Club, Rank.Six));
-    this.availableCards.push(new Card(Suit.Club, Rank.Seven));
-    this.availableCards.push(new Card(Suit.Club, Rank.Eight));
-    this.availableCards.push(new Card(Suit.Club, Rank.Nine));
-    this.availableCards.push(new Card(Suit.Club, Rank.Ten));
-    this.availableCards.push(new Card(Suit.Club, Rank.Jack));
-    this.availableCards.push(new Card(Suit.Club, Rank.Queen));
-    this.availableCards.push(new Card(Suit.Club, Rank.King));
-    this.availableCards.push(new Card(Suit.Club, Rank.Ace));
+    this.availableCards.push(new CardModel(Suit.Club, Rank.Two));
+    this.availableCards.push(new CardModel(Suit.Club, Rank.Three));
+    this.availableCards.push(new CardModel(Suit.Club, Rank.Four));
+    this.availableCards.push(new CardModel(Suit.Club, Rank.Five));
+    this.availableCards.push(new CardModel(Suit.Club, Rank.Six));
+    this.availableCards.push(new CardModel(Suit.Club, Rank.Seven));
+    this.availableCards.push(new CardModel(Suit.Club, Rank.Eight));
+    this.availableCards.push(new CardModel(Suit.Club, Rank.Nine));
+    this.availableCards.push(new CardModel(Suit.Club, Rank.Ten));
+    this.availableCards.push(new CardModel(Suit.Club, Rank.Jack));
+    this.availableCards.push(new CardModel(Suit.Club, Rank.Queen));
+    this.availableCards.push(new CardModel(Suit.Club, Rank.King));
+    this.availableCards.push(new CardModel(Suit.Club, Rank.Ace));
 
-    this.availableCards.push(new Card(Suit.Diamond, Rank.Two));
-    this.availableCards.push(new Card(Suit.Diamond, Rank.Three));
-    this.availableCards.push(new Card(Suit.Diamond, Rank.Four));
-    this.availableCards.push(new Card(Suit.Diamond, Rank.Five));
-    this.availableCards.push(new Card(Suit.Diamond, Rank.Six));
-    this.availableCards.push(new Card(Suit.Diamond, Rank.Seven));
-    this.availableCards.push(new Card(Suit.Diamond, Rank.Eight));
-    this.availableCards.push(new Card(Suit.Diamond, Rank.Nine));
-    this.availableCards.push(new Card(Suit.Diamond, Rank.Ten));
-    this.availableCards.push(new Card(Suit.Diamond, Rank.Jack));
-    this.availableCards.push(new Card(Suit.Diamond, Rank.Queen));
-    this.availableCards.push(new Card(Suit.Diamond, Rank.King));
-    this.availableCards.push(new Card(Suit.Diamond, Rank.Ace));
+    this.availableCards.push(new CardModel(Suit.Diamond, Rank.Two));
+    this.availableCards.push(new CardModel(Suit.Diamond, Rank.Three));
+    this.availableCards.push(new CardModel(Suit.Diamond, Rank.Four));
+    this.availableCards.push(new CardModel(Suit.Diamond, Rank.Five));
+    this.availableCards.push(new CardModel(Suit.Diamond, Rank.Six));
+    this.availableCards.push(new CardModel(Suit.Diamond, Rank.Seven));
+    this.availableCards.push(new CardModel(Suit.Diamond, Rank.Eight));
+    this.availableCards.push(new CardModel(Suit.Diamond, Rank.Nine));
+    this.availableCards.push(new CardModel(Suit.Diamond, Rank.Ten));
+    this.availableCards.push(new CardModel(Suit.Diamond, Rank.Jack));
+    this.availableCards.push(new CardModel(Suit.Diamond, Rank.Queen));
+    this.availableCards.push(new CardModel(Suit.Diamond, Rank.King));
+    this.availableCards.push(new CardModel(Suit.Diamond, Rank.Ace));
 
-    this.availableCards.push(new Card(Suit.Heart, Rank.Two));
-    this.availableCards.push(new Card(Suit.Heart, Rank.Three));
-    this.availableCards.push(new Card(Suit.Heart, Rank.Four));
-    this.availableCards.push(new Card(Suit.Heart, Rank.Five));
-    this.availableCards.push(new Card(Suit.Heart, Rank.Six));
-    this.availableCards.push(new Card(Suit.Heart, Rank.Seven));
-    this.availableCards.push(new Card(Suit.Heart, Rank.Eight));
-    this.availableCards.push(new Card(Suit.Heart, Rank.Nine));
-    this.availableCards.push(new Card(Suit.Heart, Rank.Ten));
-    this.availableCards.push(new Card(Suit.Heart, Rank.Jack));
-    this.availableCards.push(new Card(Suit.Heart, Rank.Queen));
-    this.availableCards.push(new Card(Suit.Heart, Rank.King));
-    this.availableCards.push(new Card(Suit.Heart, Rank.Ace));
+    this.availableCards.push(new CardModel(Suit.Heart, Rank.Two));
+    this.availableCards.push(new CardModel(Suit.Heart, Rank.Three));
+    this.availableCards.push(new CardModel(Suit.Heart, Rank.Four));
+    this.availableCards.push(new CardModel(Suit.Heart, Rank.Five));
+    this.availableCards.push(new CardModel(Suit.Heart, Rank.Six));
+    this.availableCards.push(new CardModel(Suit.Heart, Rank.Seven));
+    this.availableCards.push(new CardModel(Suit.Heart, Rank.Eight));
+    this.availableCards.push(new CardModel(Suit.Heart, Rank.Nine));
+    this.availableCards.push(new CardModel(Suit.Heart, Rank.Ten));
+    this.availableCards.push(new CardModel(Suit.Heart, Rank.Jack));
+    this.availableCards.push(new CardModel(Suit.Heart, Rank.Queen));
+    this.availableCards.push(new CardModel(Suit.Heart, Rank.King));
+    this.availableCards.push(new CardModel(Suit.Heart, Rank.Ace));
 
-    this.availableCards.push(new Card(Suit.Spade, Rank.Two));
-    this.availableCards.push(new Card(Suit.Spade, Rank.Three));
-    this.availableCards.push(new Card(Suit.Spade, Rank.Four));
-    this.availableCards.push(new Card(Suit.Spade, Rank.Five));
-    this.availableCards.push(new Card(Suit.Spade, Rank.Six));
-    this.availableCards.push(new Card(Suit.Spade, Rank.Seven));
-    this.availableCards.push(new Card(Suit.Spade, Rank.Eight));
-    this.availableCards.push(new Card(Suit.Spade, Rank.Nine));
-    this.availableCards.push(new Card(Suit.Spade, Rank.Ten));
-    this.availableCards.push(new Card(Suit.Spade, Rank.Jack));
-    this.availableCards.push(new Card(Suit.Spade, Rank.Queen));
-    this.availableCards.push(new Card(Suit.Spade, Rank.King));
-    this.availableCards.push(new Card(Suit.Spade, Rank.Ace));
+    this.availableCards.push(new CardModel(Suit.Spade, Rank.Two));
+    this.availableCards.push(new CardModel(Suit.Spade, Rank.Three));
+    this.availableCards.push(new CardModel(Suit.Spade, Rank.Four));
+    this.availableCards.push(new CardModel(Suit.Spade, Rank.Five));
+    this.availableCards.push(new CardModel(Suit.Spade, Rank.Six));
+    this.availableCards.push(new CardModel(Suit.Spade, Rank.Seven));
+    this.availableCards.push(new CardModel(Suit.Spade, Rank.Eight));
+    this.availableCards.push(new CardModel(Suit.Spade, Rank.Nine));
+    this.availableCards.push(new CardModel(Suit.Spade, Rank.Ten));
+    this.availableCards.push(new CardModel(Suit.Spade, Rank.Jack));
+    this.availableCards.push(new CardModel(Suit.Spade, Rank.Queen));
+    this.availableCards.push(new CardModel(Suit.Spade, Rank.King));
+    this.availableCards.push(new CardModel(Suit.Spade, Rank.Ace));
   }
 }

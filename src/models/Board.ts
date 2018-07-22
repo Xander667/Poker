@@ -1,9 +1,9 @@
-import { Card } from "./Card";
+import { CardModel } from "./Card";
 
 export class Board {
-    public cards: Card[];
+    public cards: CardModel[];
   
-    constructor(card1: Card, card2: Card, card3: Card, card4: Card, card5: Card) {
+    constructor(card1: CardModel, card2: CardModel, card3: CardModel, card4: CardModel, card5: CardModel) {
         this.cards = [];
         this.cards.push(card1);
         this.cards.push(card2);

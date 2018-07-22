@@ -1,9 +1,9 @@
-import { Card, Rank, Suit } from "./Card";
+import { CardModel, Rank, Suit } from "./Card";
 
 export class FiveCardHand {
-    public cards: Card[]; // Should have 5
+    public cards: CardModel[]; // Should have 5
   
-    constructor(cards: Card[]) {
+    constructor(cards: CardModel[]) {
         this.cards = cards;
     }
 
@@ -21,7 +21,7 @@ export class FiveCardHand {
     }
 
     // Take a hand of 5 cards and return true if a card is found.
-    public containsCard(card: Card): boolean {
+    public containsCard(card: CardModel): boolean {
         let foundIt: boolean = false;
         this.cards.forEach(cardInHand => {
             if((cardInHand.rank === card.rank) && (cardInHand.suit === card.suit)) { 

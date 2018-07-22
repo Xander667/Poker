@@ -1,4 +1,4 @@
-export class Card {
+export class CardModel {
     public suit: Suit;
     public rank: Rank;
     public availableSuits: Suit[];
