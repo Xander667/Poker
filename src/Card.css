@@ -1,11 +1,11 @@
 #card {
-    height: 140px;
-    width: 100px;
+    height: 105px;
+    width: 82px;
     background-color: white;
     border-radius: 3px;
     border: black 1px solid;
   
-    margin-left: 2%;
+    margin-left: 2px;
   }
 
 #miniCard {
@@ -15,7 +15,7 @@ background-color: white;
 border-radius: 3px;
 border: black 1px solid;
 
-margin-left: 2%;
+margin-left: 2px;
 }
 
 #top {
@@ -31,7 +31,7 @@ margin-left: 2%;
 }
 
 #bottom {    
-    top: 32%;
+    top: 10%;
     left: 85%;
     width: 10%;
     position: relative;

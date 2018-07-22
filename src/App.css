@@ -11,17 +11,18 @@
   z-index: -1;
   margin-left: 25%;
   margin-top: 200px;
+  border-radius: 50px;
 }
 
 #dealCardsButton {
   height: 30px;
   width: 100px;
-  margin-left: 35%;
+  margin-left: 20%;
   margin-top: 550px
 }
 
 #boardArea {
-  margin-top: 350px;
+  margin-top: 29%;
   position: absolute;
   display: flex;
 }

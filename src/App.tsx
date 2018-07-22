@@ -51,7 +51,7 @@ class App extends React.Component<{}, IAppState> {
 
   public renderBoardOfCards(): JSX.Element {
     const style: React.CSSProperties = {
-      marginLeft: "40%"
+      marginLeft: "25%"
     };
     return(
       <div id="boardArea" style={style}>
@@ -78,7 +78,7 @@ class App extends React.Component<{}, IAppState> {
     let hand: Hand = this.state.hand1;
     if(playerNumber === 1) {
       style = {
-        marginLeft: "25%"
+        marginLeft: "65%"
       }; 
       hand = this.state.hand2;
     }
