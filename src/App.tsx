@@ -42,19 +42,14 @@ class App extends React.Component<{}, IAppState> {
           <h1 className="App-title">Welcome to Poker</h1>
         </header>
         { this.renderPokerTable() }
-        { this.renderBoardOfCards() }
         { this.renderHands()}
-        { this.renderDealCardsButton() }1
       </div>
     );
   }
 
   public renderBoardOfCards(): JSX.Element {
-    const style: React.CSSProperties = {
-      marginLeft: "25%"
-    };
     return(
-      <div id="boardArea" style={style}>
+      <div id="boardArea">
       <Card card={this.state.board.cards[0]}/>
       <Card card={this.state.board.cards[1]}/>
       <Card card={this.state.board.cards[2]}/>
@@ -73,7 +68,7 @@ class App extends React.Component<{}, IAppState> {
 
   public renderCards(playerNumber: number): JSX.Element {
     let style: React.CSSProperties = {
-      marginLeft: "45%"
+      marginLeft: "35%"
     };
     let hand: Hand = this.state.hand1;
     if(playerNumber === 1) {
@@ -105,8 +100,12 @@ class App extends React.Component<{}, IAppState> {
 
   public renderStrongHand(hand :CardModel[]): JSX.Element {
     return (
-      <div>
+      <div id="winningHand">
         <Card card={hand[0]} miniCards={true}/>
+        <Card card={hand[1]} miniCards={true}/>
+        <Card card={hand[2]} miniCards={true}/>
+        <Card card={hand[3]} miniCards={true}/>
+        <Card card={hand[4]} miniCards={true}/>
       </div>  
     );
   }
@@ -125,6 +124,8 @@ class App extends React.Component<{}, IAppState> {
     return (
       <div id="pokerTable">
         Daves
+        { this.renderBoardOfCards() }
+        { this.renderDealCardsButton() }
       </div>
     )
   }
@@ -133,7 +134,7 @@ class App extends React.Component<{}, IAppState> {
     const newHand = this.state.deck.getHand();
     const newHand2 = this.state.deck.getHand();
     const newBoard = this.state.deck.getBoard();
-    this.setState({hand1: newHand, hand2: newHand2, board: newBoard });
+    this.setState({hand1: newHand, hand2: newHand2, board: newBoard, deck: new Deck() });
   }
 }
 export default App;

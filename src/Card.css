@@ -9,14 +9,14 @@
   }
 
 #miniCard {
-height: 44px;
-width: 20px;
-background-color: white;
-border-radius: 3px;
-border: black 1px solid;
+    height: 50px;
+    width: 20px;
+    background-color: white;
+    border-radius: 3px;
+    border: black 1px solid;
 
-margin-left: 2px;
-}
+    margin-left: 2px;
+    }
 
 #top {
     left: 2%;
@@ -25,13 +25,13 @@ margin-left: 2px;
 }
 
 #middle {
-    font-size: 25px;
+    font-size: 24px;
     top: 16%;
     position: relative;
 }
 
 #bottom {    
-    top: 10%;
+    top: 8%;
     left: 85%;
     width: 10%;
     position: relative;

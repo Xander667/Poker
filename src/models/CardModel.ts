@@ -33,7 +33,7 @@ export class CardModel {
       } else if(this.rank === Rank.Nine) {
         return "9";
       } else if(this.rank === Rank.Ten) {
-        return "10";
+        return "T";
       } else if(this.rank === Rank.Jack) {
         return "J";
       } else if(this.rank === Rank.Queen) {

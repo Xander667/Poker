@@ -36,8 +36,8 @@ class Card extends React.Component<ICardProps, {}> {
   public renderMiddleRankSuit(): JSX.Element {
     return (
       <div id="middle">
-          { this.renderSuit(this.props.card.suit) }
-          { this.props.card.getRankDisplayName() }
+            { this.props.card.getRankDisplayName() }
+            { this.renderSuit(this.props.card.suit) }
       </div>
     );
   }
@@ -70,7 +70,7 @@ class Card extends React.Component<ICardProps, {}> {
 
     let suitUnicode: string = "ErrorSuit";
     if(suit === Suit.Club) {
-      style.backgroundColor = "white";
+      // style.backgroundColor = "white";
       suitUnicode = "\u2663";
     } else if(suit === Suit.Diamond) {
       style.color = "red"
@@ -80,7 +80,7 @@ class Card extends React.Component<ICardProps, {}> {
       suitUnicode = "\u2665";
     }else if(suit === Suit.Spade) {
       style.color = "black";
-      style.backgroundColor = "white";
+      // style.backgroundColor = "white";
       suitUnicode = "\u2660";
     }
 
