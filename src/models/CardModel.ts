@@ -13,42 +13,33 @@ export class CardModel {
         this.rank = rank;
     }
   
-    // private setSuit(): Suit {
-    //   const randomSuit: number = Math.floor(Math.random() * Math.floor(4));
-    //   return randomSuit;
-    // }
-
-    // private setRank(): Rank {
-    //     const randomRank: number = Math.floor(Math.random() * Math.floor(13));
-    //     return Rank[randomRank.toString()];
-    // }
-    public getRankName(): string {
+    public getRankDisplayName(): string {
       if(this.rank === Rank.Ace) {
-        return "Ace";
+        return "A";
       } else if(this.rank === Rank.Two) {
-        return "Two";
+        return "2";
       } else if(this.rank === Rank.Three) {
-        return "Three";
+        return "3";
       } else if(this.rank === Rank.Four) {
-        return "Four";
+        return "4";
       } else if(this.rank === Rank.Five) {
-        return "Five";
+        return "5";
       } else if(this.rank === Rank.Six) {
-        return "Six";
+        return "6";
       } else if(this.rank === Rank.Seven) {
-        return "Seven";
+        return "7";
       } else if(this.rank === Rank.Eight) {
-        return "Eight";
+        return "8";
       } else if(this.rank === Rank.Nine) {
-        return "Nine";
+        return "9";
       } else if(this.rank === Rank.Ten) {
-        return "Ten";
+        return "10";
       } else if(this.rank === Rank.Jack) {
-        return "Jack";
+        return "J";
       } else if(this.rank === Rank.Queen) {
-        return "Queen";
+        return "Q";
       } else if(this.rank === Rank.King) {
-        return "King";
+        return "K";
       } else {
         return "Error suit in getRankName";
       }

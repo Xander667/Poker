@@ -1,4 +1,4 @@
-import { CardModel } from '../models/CardMosdel';
+import { CardModel } from '../models/CardModel';
 import { FiveCardHand } from './../models/FiveCardHand';
 
 import { Cards } from '../constants/Cards';

@@ -1,4 +1,4 @@
-import { CardModel } from "./Card";
+import { CardModel } from "./CardModel";
 
 export class Board {
     public cards: CardModel[];

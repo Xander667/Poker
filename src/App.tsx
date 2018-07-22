@@ -42,10 +42,9 @@ class App extends React.Component<{}, IAppState> {
           <h1 className="App-title">Welcome to Poker</h1>
         </header>
         { this.renderPokerTable() }
-        <Card card={this.state.hand1.card1.suit}/>
         { this.renderBoardOfCards() }
         { this.renderHands()}
-        { this.renderDealCardsButton() }
+        { this.renderDealCardsButton() }1
       </div>
     );
   }
@@ -56,11 +55,11 @@ class App extends React.Component<{}, IAppState> {
     };
     return(
       <div id="boardArea" style={style}>
-        {this.renderCard(this.state.board.cards[0])}
-        {this.renderCard(this.state.board.cards[1])}
-        {this.renderCard(this.state.board.cards[2])}
-        {this.renderCard(this.state.board.cards[3])}
-        {this.renderCard(this.state.board.cards[4])}
+      <Card card={this.state.board.cards[0]}/>
+      <Card card={this.state.board.cards[1]}/>
+      <Card card={this.state.board.cards[2]}/>
+      <Card card={this.state.board.cards[3]}/>
+      <Card card={this.state.board.cards[4]}/>
       </div>
     );
   }
@@ -98,8 +97,8 @@ class App extends React.Component<{}, IAppState> {
           Score: { result.score } <br/>
           Best Hand: { this.renderStrongHand(result.hand)}
         </div>
-        {this.renderCard(hand.card1)}
-        {this.renderCard(hand.card2)}
+      <Card card={hand.card1}/>
+      <Card card={hand.card2}/>
       </div>
     );
   }
@@ -115,16 +114,6 @@ class App extends React.Component<{}, IAppState> {
       );
     }
     return resultingJSX;
-  }
-
-  public renderCard(card: CardModel): JSX.Element {
-    return (
-      <div id="card">
-      { card.getRankName()}
-      <br/>
-      { card.getSuitName()}
-      </div>
-    );
   }
 
   public renderDealCardsButton(): JSX.Element {

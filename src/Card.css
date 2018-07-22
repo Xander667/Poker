@@ -1,5 +1,5 @@
 #card {
-    height: 80px;
+    height: 140px;
     width: 100px;
     background-color: white;
     border-radius: 3px;
@@ -14,8 +14,14 @@
     position: relative;
 }
 
+#middle {
+    font-size: 25px;
+    top: 16%;
+    position: relative;
+}
+
 #bottom {    
-    top: 50%;
+    top: 32%;
     left: 85%;
     width: 10%;
     position: relative;

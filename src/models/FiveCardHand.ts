@@ -1,4 +1,4 @@
-import { CardModel, Rank, Suit } from "./Card";
+import { CardModel, Rank, Suit } from "./CardModel";
 
 export class FiveCardHand {
     public cards: CardModel[]; // Should have 5

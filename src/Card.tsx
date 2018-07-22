@@ -23,8 +23,9 @@ class Card extends React.Component<ICardProps, {}> {
 
   public renderMiddleRankSuit(): JSX.Element {
     return (
-      <div id="top">
+      <div id="middle">
           { this.renderSuit(this.props.card.suit) }
+          { this.props.card.getRankDisplayName() }
       </div>
     );
   }
@@ -89,4 +90,4 @@ class Card extends React.Component<ICardProps, {}> {
     );
   }
 }
-export default CardModel;
+export default Card;

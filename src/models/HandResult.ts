@@ -1,4 +1,4 @@
-import { CardModel } from "./Card";
+import { CardModel } from "./CardModel";
 
 // Simple model for a hand result.
 export class HandResult {
