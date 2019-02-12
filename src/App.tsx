@@ -319,7 +319,7 @@ class App extends React.Component<{}, IAppState> {
   public renderPokerTable(): JSX.Element {
     return (
       <div id="pokerTable">
-        Daves
+        Luckycharms Room
       </div>
     )
   }

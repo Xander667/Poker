@@ -12,6 +12,10 @@
   margin-left: 25%;
   margin-top: 200px;
   border-radius: 95px;
+
+  font-family: initial;
+  font-size: -webkit-xxx-large;
+  font-style: italic;
 }
 
 #dealCardsButton {
