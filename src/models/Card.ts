@@ -54,6 +54,38 @@ export class Card {
       }
     }
 
+    public getRankNameForCardDisplay(): string {
+      if(this.rank === Rank.Ace) {
+        return "A";
+      } else if(this.rank === Rank.Two) {
+        return "2";
+      } else if(this.rank === Rank.Three) {
+        return "3";
+      } else if(this.rank === Rank.Four) {
+        return "4";
+      } else if(this.rank === Rank.Five) {
+        return "5";
+      } else if(this.rank === Rank.Six) {
+        return "6";
+      } else if(this.rank === Rank.Seven) {
+        return "7";
+      } else if(this.rank === Rank.Eight) {
+        return "8";
+      } else if(this.rank === Rank.Nine) {
+        return "9";
+      } else if(this.rank === Rank.Ten) {
+        return "T";
+      } else if(this.rank === Rank.Jack) {
+        return "J";
+      } else if(this.rank === Rank.Queen) {
+        return "Q";
+      } else if(this.rank === Rank.King) {
+        return "K";
+      } else {
+        return "Error suit in getRankName";
+      }
+    }
+
     public getSuitName(): string {
       if(this.suit === Suit.Club) {
         return "Clubs";

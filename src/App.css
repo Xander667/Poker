@@ -11,6 +11,7 @@
   z-index: -1;
   margin-left: 25%;
   margin-top: 200px;
+  border-radius: 95px;
 }
 
 #dealCardsButton {
@@ -28,10 +29,14 @@
 
 #handResults2 {
   background-color: palevioletred;
+  border-radius: 10px;
+  height: 60px;
 }
 
 #handResults1 {
   background-color: royalblue;
+  border-radius: 10px;
+  height: 60px;
 }
 
 #handArea {
@@ -40,13 +45,15 @@
   display: flex;
 }
 
+#cardContainer {
+  margin-left: 2px;
+  margin-right: 5px;
+}
+
 #card {
-  height: 80px;
-  width: 100px;
+  height: 100px;
   background-color: white;
   border: black 1px solid;
-
-  margin-left: 2%;
 }
 
 .App-logo {
@@ -67,6 +74,17 @@
 
 .App-intro {
   font-size: large;
+}
+
+#top-number {
+  position: absolute;
+  padding-left: 2px;
+}
+
+#bottom-number {
+  position: absolute;
+  padding-left: 75px;
+  bottom: 3px;
 }
 
 @keyframes App-logo-spin {

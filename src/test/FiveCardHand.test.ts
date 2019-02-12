@@ -18,4 +18,6 @@ it('test containsCard() with Four Aces and Eight of Clubs', () => {
   expect(fiveCardHand.containsCard(Cards.AceHearts)).toEqual(true);
   expect(fiveCardHand.containsCard(Cards.AceSpades)).toEqual(true);
   expect(fiveCardHand.containsCard(Cards.EightClubs)).toEqual(true);
+
+  // Verify scores. Kh 9d Kc 2d 4c -  8c 2d   - Tc A h
 });
